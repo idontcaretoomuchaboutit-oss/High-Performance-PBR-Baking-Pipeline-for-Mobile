@@ -18,8 +18,7 @@
 解决方案：我基于Unity软件开发了一个光影烘培工具。它的核心理念是 “离线计算，运行时作弊”。
 通过自定义渲染管线，我们将 Unity 的光照系统（Lightmap）、场景反射（Reflection Probe）以及材质本身的 PBR 属性，
 进行数学上的“预合成”，最终输出一张包含所有信息的“超级贴图”，而最后仅使用Unlit Shader来进行渲染，可以做到极低的开销。
-<br>[请插入动图：展示 Standard 材质的金属物体，有实时光影]
-<br>
+<img width="610" height="485" alt="image" src="https://github.com/user-attachments/assets/85fb53d1-f936-4b16-a660-6427cf3a752f" />
 
 # 二. 核心技术：双管齐下的烘焙策略 (Dual-Pipeline)
 为了兼顾“非金属”的柔和与“金属”的质感，本工具并未采用单一算法，而是设计了两套完全独立的烘焙管线，专为不同材质设计：
@@ -27,14 +26,13 @@
 🟢 模式 A：Diffuse (非金属专用)
 特点：专治木头、布料、石头等粗糙表面。
 采用 Gamma 视觉校正算法，智能提亮暗部细节，模拟人眼对柔和光照的感知，彻底解决传统烘焙“死黑、惨白”的问题。
-<br>[请插入对比图：左边是普通烘焙（死黑），右边是优化后（柔和清晰）]
 
 🔵 模式 B：Standard (金属专用)
 特点：专治金属、瓷器、电子屏等高光表面。
 黑科技：智能反射捕获：自动寻找最近的 Reflection Probe，把环境倒影“画”在贴图上。
 严格遵循 PBR 物理公式，完美还原金属质感，拒绝“塑料感”。
-<br>[请插入对比图：左边是无反射的金属（像黑塑料），右边是烘焙后（有清晰倒影）]
-<br>
+<img width="1378" height="794" alt="image" src="https://github.com/user-attachments/assets/455597d3-e782-4ec3-bb69-f187171b102e" />
+<img width="1863" height="909" alt="image" src="https://github.com/user-attachments/assets/5b1096aa-cbab-40fd-87b0-599f355064e3" />
 
 
 
@@ -45,4 +43,10 @@ VR 一体机项目 (Quest/Pico)：
 海量的远景建筑、路边杂物，烘焙后可配合 GPU Instancing 疯狂降低 Draw Call。
 高性能展厅/元宇宙：
 需要在 WebGL 或低端机上流畅运行的高画质场景。
-<br>[请插入最终效果 GIF：展示一个复杂的金属+木头组合物体，在 Standard 和 Baked Unlit 之间切换，视觉几乎一致，但性能开销天差地别]
+
+Other app show case(only for showing)
+<img width="1640" height="1584" alt="image" src="https://github.com/user-attachments/assets/466313f3-b153-4073-9366-d6d574b34f44" />
+<img width="2129" height="948" alt="image" src="https://github.com/user-attachments/assets/6adb9cf5-b35a-4fc8-8780-ed2edb8a305b" />
+
+
+
