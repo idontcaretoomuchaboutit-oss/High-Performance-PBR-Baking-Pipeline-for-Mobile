@@ -1,6 +1,7 @@
 ⚡ 将光影烘培进贴图的方案 (Bake Light and Shadow into Texture)
 ==================================================================================================
 本文将介绍一种在Unity里将光照、阴影信息烘培进模型贴图的技术（支持 Diffuse 和 Standard (PBR) 材质）
+<img width="610" height="485" alt="image" src="https://github.com/user-attachments/assets/85fb53d1-f936-4b16-a660-6427cf3a752f" />
 
 # 一、在开发 Oculus Quest、Pico 或高性能移动端游戏时：
 <br>1、如果追求画质：使用 Standard PBR Shader。
@@ -18,7 +19,6 @@
 解决方案：我基于Unity软件开发了一个光影烘培工具。它的核心理念是 “离线计算，运行时作弊”。
 通过自定义渲染管线，我们将 Unity 的光照系统（Lightmap）、场景反射（Reflection Probe）以及材质本身的 PBR 属性，
 进行数学上的“预合成”，最终输出一张包含所有信息的“超级贴图”，而最后仅使用Unlit Shader来进行渲染，可以做到极低的开销。
-<img width="610" height="485" alt="image" src="https://github.com/user-attachments/assets/85fb53d1-f936-4b16-a660-6427cf3a752f" />
 
 # 二. 核心技术：双管齐下的烘焙策略 (Dual-Pipeline)
 为了兼顾“非金属”的柔和与“金属”的质感，本工具并未采用单一算法，而是设计了两套完全独立的烘焙管线，专为不同材质设计：
