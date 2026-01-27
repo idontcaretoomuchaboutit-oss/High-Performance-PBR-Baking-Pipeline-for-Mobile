@@ -44,7 +44,7 @@ VR 一体机项目 (Quest/Pico)：
 高性能展厅/元宇宙：
 需要在 WebGL 或低端机上流畅运行的高画质场景。
 
-Other app show case(only for showing)
+Pico 和 Meta 的做法也是这样子的（下图），仅做学习使用。
 <img width="1640" height="1584" alt="image" src="https://github.com/user-attachments/assets/466313f3-b153-4073-9366-d6d574b34f44" />
 <img width="2129" height="948" alt="image" src="https://github.com/user-attachments/assets/6adb9cf5-b35a-4fc8-8780-ed2edb8a305b" />
 
